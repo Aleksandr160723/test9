@@ -1,0 +1,580 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #111111 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    background: color #1b1b1b;
+    padding: 30px;
+    height: calc(100vh - 80px); /* Учитываем высоту нижней панели */
+    width: 90%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    margin-bottom: 0px; /* Отступ для нижней панели */
+    
+}
+
+.balance-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    height: -200px;
+}
+
+.balance-label {
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    transform: translate(32px, -240px);
+}
+
+.balance {
+    text-align: left;
+    width: 300px;
+    font-size: 35px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    margin-top: 75px;
+    transform: translate(-50px, -235px);
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.level-box, .click-box {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 7px 28px;
+    border-radius: 70px;
+    background: linear-gradient(135deg, #777676, #17883d, rgb(9, 184, 117), rgb(0, 255, 213));
+    color: white;
+    margin-top: -45px;
+    position: relative;
+    top: -175px;
+    transform: translateX(11px);
+}
+
+.click-area {
+    height: 350px;
+    margin-bottom: 0px;
+    padding: 120px;
+    position: relative;
+    top: -125px;
+    background: linear-gradient(#8a8787, rgb(57, 58, 57));
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgb(10, 201, 83);
+    cursor: pointer;
+    user-select: none;
+    font-size: 19px;
+    font-weight: bold;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    bottom: 0;
+}
+
+/* Стили для нижней панели навигации */
+.bottom-nav-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(135deg, #141414, rgb(20, 20, 20));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Увеличен z-index для отображения над всеми страницами */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 20px;
+    transform: translateX(-30px);
+    z-index: 2000; /* Такой же z-index, как у панели */
+}
+
+.nav-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 13%;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+    filter: none;
+    position: relative;
+    z-index: 2000; /* Обеспечивает доступность кнопок */
+}
+
+/* Стили для всех страниц */
+.subpage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px); /* Высота уменьшена на размер панели */
+    background: linear-gradient(135deg, #161616, rgb(36, 35, 36), rgb(33, 33, 34));
+    padding: 30px;
+    display: none;
+    z-index: 1000; /* Меньше, чем у панели навигации */
+    box-sizing: border-box;
+}
+.add-btn {
+    background: hsl(240, 1%, 14%);
+    color: white;
+}
+
+.back-btn {
+    background: hsl(240, 1%, 14%);
+    color: white;
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+.white-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px); /* Учитываем высоту нижней панели */
+    background: linear-gradient(135deg, #161616, rgb(36, 35, 36), rgb(33, 33, 34));
+    padding: 30px;
+    display: none;
+    z-index: 999;
+    box-sizing: border-box;
+}
+
+.enterprise {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.nav-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 50px;
+}
+
+.tab-btn {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2ee016, rgb(14, 180, 83), rgb(15, 196, 141), rgb(56, 165, 192));
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    transform: translateY(150px);
+    margin-bottom: 50px;
+}
+
+.main-bg {
+    width: 100%;
+    max-width: 500px;
+    height: 29%;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        height: calc(100vh - 60px);
+    }
+
+    .click-area {
+        padding: 60px;
+        height: (100% -120px);
+        margin-bottom: 0px;
+    }
+
+    .balance {
+        font-size: 28px;
+    }
+
+    .stats {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .overlay-ui {
+        top: 10px;
+        left: 10px;
+        font-size: 16px;
+    }
+}
+/* Контейнер карты */
+.container.main-page {
+    position: relative; /* Для абсолютного позиционирования дочерних элементов */
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    top: 20px;
+}
+
+.map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Карта на весь экран */
+    position: absolute;
+    top: 0;
+    left: 10;
+    z-index: 1; /* Уровень ниже текста */
+}
+
+/* Элементы поверх карты */
+.overlay-ui {
+    position: absolute;
+    top: 20px; /* Отступ сверху */
+    left: 20px; /* Отступ слева */
+    z-index: 2; !important; /* Поверх карты */
+    color: white; /* Белый текст */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Тень для контраста */
+}
+
+/* Стили для текста */
+.balance-container {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.stats {
+    font-size: 20px;
+}
+
+.level-box, .click-box {
+    display: inline-block;
+    margin-right: 20px;
+}
+/* Запрет прокрутки для всего документа */
+html, body {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    touch-action: none; /* Блокировка жестов на мобильных */
+}
+
+/* Фиксированный размер для контейнеров */
+.container, 
+.subpage, 
+.white-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+.movable-page {
+    max-width: 90%; /* Не шире экрана */
+    max-height: 80vh; /* Не выше экрана */
+}
+.enterprise, 
+.nav-buttons {
+    max-width: 100%;
+    white-space: nowrap; /* Текст не переносится */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Для всех элементов и псевдоэлементов */
+*, *::before, *::after {
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE/Edge */
+    user-select: none; /* Стандартный синтаксис */
+    -webkit-tap-highlight-color: transparent; /* Убирает подсветку на мобильных */
+    outline: none !important; /* Убирает outline при фокусе */
+}
+
+/* Для текстовых полей (если есть) */
+input, textarea {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+.money-symbol {
+    position: absolute;
+    font-size: 34px;
+    color: rgb(30, 197, 15);
+    opacity: 0;
+    animation: moneyAppear 0.7s ease-out forwards;
+  }
+  
+  @keyframes moneyAppear {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(-10px) scale(1.2);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-20px) scale(1);
+    }
+  }
+
+  .click-area {
+  /* существующие стили остаются */
+  animation: none; /* по умолчанию анимация выключена */
+}
+
+.click-area.clicked {
+  animation: clickHighlight 0.5s ease-out;
+}
+
+@keyframes clickHighlight {
+  0% {
+    box-shadow: 0 0 0 0 rgba(10, 201, 83, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(10, 201, 83, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(10, 201, 83, 0);
+  }
+}
+.level-up-button {
+    font-size: 28px;
+    font-weight: bold;
+    padding: 7px 28px;
+    border-radius: 70px;
+    background: linear-gradient(135deg, #545554, #535252, #313131);
+    color: white;
+    margin-top: -45px;
+    position: relative;
+    top: -191px;
+    transform: translateX(0px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.level-up-button.visible {
+    opacity: 1;
+}
+
+.level-up-button.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+/* Стили для кнопок "АЗС", "Бизнес", "Компания" */
+
+/* Базовые стили для всех кнопок */
+.biz-btn {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1001;
+    transition: transform 0.2s;
+}
+
+/* Стили для кнопки "АЗС" */
+#gasStationBtn {
+    background: linear-gradient(135deg, #2ee016, rgb(14, 180, 83), rgb(15, 196, 141), rgb(56, 165, 192));
+    margin-right: 20px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    transform: translate(-20px, 110px);
+}
+
+
+/* Стили для кнопки "Бизнес" */
+#businessBtn {
+    background: linear-gradient(135deg, #2ee016, rgb(14, 180, 83), rgb(15, 196, 141), rgb(56, 165, 192));
+    margin: 10px 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    transform: translate(-20px, 130px)
+}
+
+
+
+/* Стили для кнопки "Компания" */
+#companyBtn {
+    background: linear-gradient(135deg, #2ee016, rgb(14, 180, 83), rgb(15, 196, 141), rgb(56, 165, 192));
+    margin-right: 20px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    transform: translate(-20px, 150px);
+}
+
+
+/* Стили для контейнера кнопок */
+.business-buttons {
+    display: flex;
+    gap: 30px;
+    margin-top: 60px;
+    z-index: 1001;
+    width: 100%; /* Добавлено для расширения контейнера */
+    max-width: 800px; /* Добавлено для ограничения максимальной ширины */
+    padding: 20px; /* Добавлено для внутренних отступов */
+    justify-content: space-around ; 
+    align-items: center; /* Добавлено для вертикального центрирования */
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Стили для нижней панели навигации */
+.bottom-nav-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(135deg, #141414, rgb(20, 20, 20));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 20px;
+    transform: translateX(-30px);
+    z-index: 1001;
+}
+
+.nav-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 13%;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+    filter: none;
+    position: relative;
+    z-index: 1001;
+}
+
+.add-btn {
+    background: hsl(240, 1%, 14%);
+    color: white;
+}
+
+.back-btn {
+    background: hsl(240, 1%, 14%);
+    color: white;
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+.click-area {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .glow-effect {
+    filter: blur(20px);
+    position: absolute;
+    pointer-events: none;
+    background: linear-gradient(90deg, 
+      rgba(10, 201, 83, 0) 0%,
+      rgb(18, 190, 84) 50%,
+      rgba(10, 201, 83, 0) 100%
+    );
+    opacity: 0;
+    z-index: 2;
+  }
+  
+  @keyframes glowAnimation {
+    0% {
+      opacity: 0;
+      transform: scaleX(0.05);
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: scaleX(1.2);
+    }
+  }
+  
+  .glow-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    animation: glowAnimation 0.8s;
+    transform-origin: center top;
+  }
+  
+  .glow-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    animation: glowAnimation 0.8s;
+    transform-origin: center bottom;
+  }
+  
+  .glow-left {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 35px;
+    animation: glowAnimation 0.8s;
+    transform-origin: left center;
+  }
+  
+  .glow-right {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 35px;
+    animation: glowAnimation 0.8s;
+    transform-origin: right center;
+  }
+  

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" 
+      content="width=device-width, 
+               initial-scale=1.0, 
+               maximum-scale=1.0, 
+               user-scalable=no, 
+               shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кликер Игра</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Главная страница -->
+    <div class="container main-page">
+        <!-- Добавлено изображение -->
+        <img src="images/photo_2025-02-12_13-01-21.jpg" class="main-bg" alt="Game Background">
+        
+        <!-- Контейнеры с информацией поверх изображения -->
+        <div class="balance-container">
+            <span class="balance-label">Баланс:</span>
+            <span class="balance">$ <span id="balance">0,00</span></span>
+        </div>
+        <div class="stats">
+            <div class="level-box">LEVEL: <span id="level">1</span></div>
+            <div class="click-box">CLICK: <span id="clickValue">1.00</span></div>
+        </div>
+<div id="levelUpButton" class="level-up-button hidden">Поднять уровень</div>
+        <div class="click-area" id="clickArea">Кликай, кликай, кликай</div>
+    </div>
+
+    <!-- Белая страница (открывается через "+") -->
+    <div id="whitePage" class="white-page">
+        <div class="enterprise" style="color: white;">Предприятия</div>
+        <div class="nav-tabs">
+            <button class="tab-btn" id="buyBtn">Купить предприятие</button>
+            <button class="tab-btn" id="myBtn">Мои предприятия</button>
+        </div>
+    </div>
+
+    <!-- Страница покупки -->
+    <div id="buyPage" class="subpage">
+            <div class="enterprise">Купить предприятие</div>
+            <div class="business-buttons">
+                <button class="biz-btn" id="gasStationBtn">АЗС</button>
+                <button class="biz-btn" id="businessBtn">Бизнес</button>
+                <button class="biz-btn" id="companyBtn">Компания</button>
+            </div>
+        </div>
+        
+        <!-- Новые страницы -->
+        <div id="gasStationPage" class="subpage">
+            <div class="enterprise">АЗС</div>
+        </div>
+        <div id="businessPage" class="subpage">
+            <div class="enterprise">Бизнес</div>
+        </div>
+        <div id="companyPage" class="subpage">
+            <div class="enterprise">Компания</div>
+        </div>
+    </div>
+
+    <!-- Страница управления -->
+    <div id="myPage" class="subpage">
+        <div class="enterprise">Мои предприятия</div>
+    </div>
+
+    <!-- Новая фиксированная панель навигации -->
+    <div class="bottom-nav-panel">
+        <div class="nav-buttons">
+            <button class="nav-btn add-btn" id="addBtn">+</button>
+            <button class="nav-btn back-btn" id="backBtn">$</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
